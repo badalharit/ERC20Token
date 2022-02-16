@@ -37,7 +37,7 @@ contract SafeMath {
 }
 
 
-contract CodeWithJoe is ERC20Interface, SafeMath {
+contract MrCloudy is ERC20Interface, SafeMath {
     string public name;
     string public symbol;
     uint8 public decimals; // 18 decimals is the strongly suggested default, avoid changing it
@@ -55,8 +55,8 @@ contract CodeWithJoe is ERC20Interface, SafeMath {
      |----------------------------------------------------------------------------------------------
      */
     constructor() {
-        name = "CodeWithJoe";
-        symbol = "CWJ";
+        name = "MrCloudy";
+        symbol = "LUV";
         decimals = 18;
         _totalSupply = 100000000000000000000000000;
 

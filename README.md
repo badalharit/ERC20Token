@@ -13,8 +13,22 @@ node (v14.16.1)
 ## Setup
 
 ```bash
-npm init -y (To Setup `package.json`)
-npm install -save web3 (To install the `web3.js`)
+> npm init -y (To Setup `package.json`)
+> npm install -save web3 (To install the `web3.js`)
+```
+
+## Compiling & Using Smart Contract (ABI Migration)
+###### Recommended*
+Go to [RemixIDE](https://remix.ethereum.org/) and compile & deploy the contract using the IDE tools.
+
+###### Not Recommended || typing...
+```bash
+> node
+```
+```javascript 
+> let Web3 = require("web3");
+> let web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
+> let contract = new web3.eth.Contract(`CONTRACT_ABI_CODE_FROM_REMIX_IDE`,`CONTRACT_ADDRESS`);
 ```
 
 ## Contributing
