@@ -15,6 +15,7 @@ node (v14.16.1)
 ```bash
 > npm init -y (To Setup `package.json`)
 > npm install -save web3 (To install the `web3.js`)
+> npm install -save solc (To install the `Solidity` compiler)
 ```
 
 ## Compiling & Using Smart Contract (ABI Migration)
