@@ -16,22 +16,17 @@ node (v14.16.1)
 > npm init -y (To Setup `package.json`)
 > npm install -save web3 (To install the `web3.js`)
 > npm install -save solc (To install the `Solidity` compiler)
+> npm install @truffle/hdwallet-provider (Package that we use to deploy the smart contract)
 ```
 
 ## Compiling & Using Smart Contract (ABI Migration)
 ###### Recommended*
 Go to [RemixIDE](https://remix.ethereum.org/) and compile & deploy the contract using the IDE tools.
 
-###### Not Recommended || typing...
+###### Not Recommended (For Newbies)
 ```bash
-> node
+> node scripts/compile.js 
 ```
-```javascript 
-> let Web3 = require("web3");
-> let web3 = new Web3(new Web3.providers.HttpProvider("HTTP://127.0.0.1:7545"));
-> let contract = new web3.eth.Contract(`CONTRACT_ABI_CODE_FROM_REMIX_IDE`,`CONTRACT_ADDRESS`);
-```
-
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
