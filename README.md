@@ -26,6 +26,9 @@ Go to [RemixIDE](https://remix.ethereum.org/) and compile & deploy the contract 
 ###### Not Recommended (For Newbies)
 ```bash
 > node scripts/compile.js 
+> node scripts/server.js
+OR
+> node scripts/deploy.js
 ```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

@@ -56,7 +56,7 @@ contract MrCloudy is ERC20Interface, SafeMath {
      */
     constructor() {
         name = "MrCloudy";
-        symbol = "LUV";
+        symbol = "CLOUDY";
         decimals = 18;
         _totalSupply = 100000000000000000000000000;
 
