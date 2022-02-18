@@ -25,11 +25,15 @@ const web3 = new Web3(provider);
 		.send({
 			from: accounts[0],
 			gas: '2000000'
-		});
-
-	console.log(
-		`Contract deployed at address: ${deployedContract.options.address}`
-	);
+		},
+		(err, transactionHash) => {
+			console.info(`Click here to check the transaction: https://rinkeby.etherscan.io/tx/${transactionHash}`);
+		}
+		);
+	
+	console.log(`Contract deployed at address: ${deployedContract.options.address}`);
+	console.info(`Click here to access the contract: https://rinkeby.etherscan.io/address/${deployedContract.options.address}`);
 
 	provider.engine.stop();
+	process.exit(1);
 })();
