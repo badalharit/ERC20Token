@@ -2,8 +2,25 @@
 const compiledContract = require('../compiled_contracts/builds/MrCloudy.json');
 const Web3 = require('web3');
 const HDWalletProvider = require("@truffle/hdwallet-provider");
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
+
+const logDirectory = path.resolve('storage','logs');
+const logPath = logDirectory+'/application.log';
+
+if(!fs.existsSync(logPath)){
+    fs.emptyDirSync(logDirectory);
+}    
+
+const timeStamp = '['+new Date()+'] ';
+
+fs.open(logPath, "a+", (err, file) => {
+    if (err) throw err;
+    var msg = timeStamp+"--------------------------------------------------------------------------------------------------------------------------------------\n";
+        msg +=timeStamp+"---------------------------------------------- Initializing Deploymet Of SmartContracts ----------------------------------------------\n";
+        msg +=timeStamp+"--------------------------------------------------------------------------------------------------------------------------------------\n";
+    fs.appendFile(logPath, msg);
+ });
 
 const mnemonic = fs.readFileSync(path.resolve('.secret')).toString().trim();
 
@@ -24,6 +41,9 @@ let deploy_contract = new web3.eth.Contract(abi);
 const accounts = await web3.eth.getAccounts();
 let account = accounts[0];
 
+fs.appendFile(logPath, timeStamp+"Collected the ABI & ByteCode of the SmartContracts\n");
+fs.appendFile(logPath, timeStamp+"Accessed the Metamask account "+account+" for the deployment\n");
+
 // Function Parameter
 let payload = {
     data: bytecode
@@ -36,11 +56,13 @@ let parameter = {
 }
 
 console.log('Deploying the smart contract using '+account+' account');
+fs.appendFile(logPath, timeStamp+"Deployment is started!\n");
 
 // Function Call
 deploy_contract.deploy(payload).send(parameter, (err, transactionHash) => {
     console.log('Transaction Hash :', transactionHash);
     console.info('Click here to check the transaction: '+'https://rinkeby.etherscan.io/tx/'+transactionHash);
+    fs.appendFile(logPath, timeStamp+'Click here to check the transaction: '+'https://rinkeby.etherscan.io/tx/'+transactionHash+"\n");
 }).on('confirmation', () => {}).then((newContractInstance) => {
     console.log('Deployed Contract Address : ', newContractInstance.options.address);
     console.info('Click here to access the contract: '+'https://rinkeby.etherscan.io/address/'+newContractInstance.options.address);
