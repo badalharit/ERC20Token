@@ -40,7 +40,10 @@ console.log('Deploying the smart contract using '+account+' account');
 // Function Call
 deploy_contract.deploy(payload).send(parameter, (err, transactionHash) => {
     console.log('Transaction Hash :', transactionHash);
+    console.info('Click here to check the transaction: '+'https://rinkeby.etherscan.io/tx/'+transactionHash);
 }).on('confirmation', () => {}).then((newContractInstance) => {
     console.log('Deployed Contract Address : ', newContractInstance.options.address);
+    console.info('Click here to access the contract: '+'https://rinkeby.etherscan.io/address/'+newContractInstance.options.address);
+    process.exit(1);
 })
 })();
